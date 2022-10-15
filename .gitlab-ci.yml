@@ -3,8 +3,10 @@ build_image:
   services:
   - docker:dind
   script:
-    - docker build -t registry.gitlab.com/pj-devops/django-app:$TAG_COMMIT .
+    - docker build -t $TAG_COMMIT -t $TAG_LATEST .
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker push registry.gitlab.com/pj-devops/django-app:$TAG_COMMIT
+   # - docker push registry.gitlab.com/pj-devops/django-app:$TAG_COMMIT
+    - docker push $TAG_COMMIT
+    - docker push $TAG_LATEST
   only:
     - master
