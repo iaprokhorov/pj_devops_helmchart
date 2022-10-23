@@ -1,11 +1,11 @@
-variables:
-  NAMESPACE: pj-devops
-  RELEASE_NAME: django-app
-  REGISTRY_REPOSITORY: $RELEASE_NAME
-  DOCKERFILE_PATH: $CI_PROJECT_DIR/Dockerfile
+#variables:
+#  NAMESPACE: pj-devops
+#  RELEASE_NAME: django-app
+#  REGISTRY_REPOSITORY: $RELEASE_NAME
+#  DOCKERFILE_PATH: $CI_PROJECT_DIR/Dockerfile
 
-stages:
-  - build
+#stages:
+ # - build
 
 build_image:
   image: docker:latest
