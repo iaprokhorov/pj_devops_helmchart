@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  labels:
+    app: db
+    component: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+      component: myapp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db
+        component: myapp
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: tutorial-dev
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: POSTGRES_USER
+              value: vinhle
+          image: postgres:13-alpine
+          name: db
+          ports:
+            - containerPort: 5432
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: tutorial-volume
+      restartPolicy: Always
+      volumes:
+        - name: tutorial-volume
+          persistentVolumeClaim:
+            claimName: tutorial-volume
+status: {}
