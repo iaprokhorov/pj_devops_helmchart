@@ -6,10 +6,9 @@ variables:
   CONTAINER_IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
   TAG: develop
 
-
-
 stages:
   - build
+  - deploy
 
 services:
   - docker:dind
@@ -17,7 +16,7 @@ services:
 build:
   stage: build
   image:
-   name: docker:git
+   name: docker:latest
 
   script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
@@ -27,3 +26,10 @@ build:
     - docker push $CONTAINER_IMAGE_NAME
   only:
     - master
+
+deploy:
+  stage: deploy
+  image:
+    name: dtzar/helm-kubectl
+    entrypoint: [""]
+      -

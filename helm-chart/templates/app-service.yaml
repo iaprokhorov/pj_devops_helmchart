@@ -7,11 +7,11 @@ metadata:
     component: myapp
 spec:
   ports:
+    - type: NodePort
     - name: "3003"
       port: 3003
       targetPort: 3003
   selector:
     app: app
     component: myapp
-status:
-  loadBalancer: {}
+

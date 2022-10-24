@@ -3,7 +3,6 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-#    io.kompose.service: app-claim0
     app: app-claim0
     component: myapp
   name: app-claim0
