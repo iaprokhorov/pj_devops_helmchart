@@ -8,7 +8,7 @@ variables:
 
 stages:
   - build
-  - deploy
+#  - deploy
 
 services:
   - docker:dind
@@ -27,9 +27,9 @@ build:
   only:
     - master
 
-deploy:
-  stage: deploy
-  image:
-    name: dtzar/helm-kubectl
-    entrypoint: [""]
+#deploy:
+# stage: deploy
+#  image:
+#    name: dtzar/helm-kubectl
+#    entrypoint: [""]
       -
