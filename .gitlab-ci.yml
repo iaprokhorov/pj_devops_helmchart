@@ -32,4 +32,3 @@ build:
 #  image:
 #    name: dtzar/helm-kubectl
 #    entrypoint: [""]
-      -
