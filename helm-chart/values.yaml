@@ -5,6 +5,6 @@
 replicaCount: 1
 
 container-app:
-  image: django-app:master
+  image: django-app:1.0.3
 
 

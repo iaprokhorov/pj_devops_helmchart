@@ -8,7 +8,7 @@ variables:
 
 stages:
   - build
-#  - deploy
+  - deploy
 
 services:
   - docker:dind
@@ -24,19 +24,18 @@ build:
     - docker build -t $CONTAINER_IMAGE_NAME .
    # - docker push registry.gitlab.com/pj-devops/django-app:$TAG_COMMIT
     - docker push $CONTAINER_IMAGE_NAME
-#  only:
-#    - $CI_COMMIT_REF_NAME
 
 
-#deploy:
-#  stage: deploy
-#  image:
-#    name: alpine/helm
-#    entrypoint: [""]
-#  script:
-#    - |
-#       helm install --set TAG=$TAG_COMMIT \
-#                    --namespace $NAMESPACE \
-#                    --recreate-pods --timeout 600s -atomic \
-#                    --install $REALISE_NAME helm-chart
+deploy:
+  stage: deploy
+  image:
+    name: alpine/helm
+    entrypoint: [""]
+  script:
+    - |
+       helm install 
+                    --namespace $NAMESPACE \
+#                    --set TAG=$CI_COMMIT_REF_NAME \
+                    --recreate-pods --timeout 600s -atomic \
+                    --install $REALISE_NAME helm-chart
 
