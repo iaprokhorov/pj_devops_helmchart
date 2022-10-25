@@ -24,8 +24,8 @@ build:
     - docker build -t $CONTAINER_IMAGE_NAME .
    # - docker push registry.gitlab.com/pj-devops/django-app:$TAG_COMMIT
     - docker push $CONTAINER_IMAGE_NAME
-  only:
-    - $CI_COMMIT_REF_NAME
+#  only:
+#    - $CI_COMMIT_REF_NAME
 
 #deploy:
 #  stage: deploy
