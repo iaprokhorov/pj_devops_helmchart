@@ -7,7 +7,7 @@ metadata:
     component: myapp
 
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: app
@@ -34,7 +34,7 @@ spec:
               value: password
             - name: DB_USER
               value: vinhle
-          image: app
+          image: {{ .Values.container-app.image }}
           name: app
           ports:
             - containerPort: 3003

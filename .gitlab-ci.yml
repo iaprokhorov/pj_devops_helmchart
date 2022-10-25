@@ -27,8 +27,15 @@ build:
   only:
     - master
 
-#deploy:
-# stage: deploy
-#  image:
-#    name: dtzar/helm-kubectl
-#    entrypoint: [""]
+deploy:
+  stage: deploy
+  image:
+    name: alpine/helm
+    entrypoint: [""]
+  script:
+    - |
+       helm install --set TAG=$TAG_COMMIT \
+                    --namespace $NAMESPACE \
+                    --recreate-pods --timeout 600s -atomic \
+                    --install $REALISE_NAME helm-chart
+

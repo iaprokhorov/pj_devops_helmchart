@@ -4,10 +4,7 @@
 
 replicaCount: 1
 
-image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the helm-chart appVersion.
-  tag: ""
+container-app:
+  image: django-app:master
 
 
