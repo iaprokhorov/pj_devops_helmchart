@@ -33,9 +33,8 @@ deploy:
     entrypoint: [""]
   script:
     - |
-       helm install 
-                    --namespace $NAMESPACE \
-#                    --set TAG=$CI_COMMIT_REF_NAME \
+       helm install --namespace $NAMESPACE \
+#                   --set TAG=$CI_COMMIT_REF_NAME \
                     --recreate-pods --timeout 600s -atomic \
                     --install $REALISE_NAME helm-chart
 
