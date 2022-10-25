@@ -4,7 +4,7 @@ variables:
   REGISTRY_REPOSITORY: $RELEASE_NAME
   DOCKERFILE_PATH: $CI_PROJECT_DIR/Dockerfile
   CONTAINER_IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
-  TAG: develop
+#  TAG: develop
 
 stages:
   - build
@@ -32,8 +32,13 @@ deploy:
     name: alpine/helm
     entrypoint: [""]
   script:
-    - |
-       helm install --namespace $NAMESPACE \
-                    --recreate-pods --timeout 600s -atomic \
-                    --install $REALISE_NAME helm-chart
+    - helm install --namespace pj-devops myapp helm-chart
+
+
+
+#    - |
+#       helm install --namespace $NAMESPACE \
+#                   --set TAG=$CI_COMMIT_REF_NAME \
+#                    --recreate-pods --timeout 600s -atomic \
+#                    --install $REALISE_NAME helm-chart
 
