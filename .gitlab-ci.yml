@@ -37,7 +37,7 @@ deploy:
   image:
 #    name: alpine/helm:3.10.1
     name: dtzar/helm-kubectl:3.10.1
-    entrypoint: [""]
+#    entrypoint: [""]
   before_script:
     - docker run -it -v ~/.kube:/root/.kube dtzar/helm-kubectl
   script:
