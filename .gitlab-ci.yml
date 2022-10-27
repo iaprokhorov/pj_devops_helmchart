@@ -35,11 +35,10 @@ build:
 deploy:
   stage: deploy
   image:
-    name: alpine/helm
-    entrypoint: [""]
+    name: alpine/helm:3.2.1
 
   script:
-    - helm install --namespace pj-devops myapp helm-chart #--kubeconfig ~/.kube/config
+    - helm upgrade myapp helm-chart --install --namespace pj-devops #--kubeconfig ~/.kube/config
 
 
 #    - |
