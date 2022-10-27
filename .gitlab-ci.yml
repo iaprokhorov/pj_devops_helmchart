@@ -39,7 +39,6 @@ deploy:
   script:
     - helm upgrade myapp helm-chart --install --namespace pj-devops
 
-
 #    - |
 #       helm install --namespace $NAMESPACE \
 #                   --set TAG=$CI_COMMIT_REF_NAME \

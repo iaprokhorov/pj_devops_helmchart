@@ -34,7 +34,7 @@ spec:
               value: password
             - name: DB_USER
               value: vinhle
-          image: {{ index .Values.container-app.image }}
+          image: {{ index .Values.containerApp.image }}
           name: app
           ports:
             - containerPort: 3003
