@@ -22,7 +22,7 @@ services:
 build:
   stage: build
   image:
-   name: docker:20-dind
+   name: gitlab/dind
 
   script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
