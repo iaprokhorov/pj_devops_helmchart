@@ -15,7 +15,7 @@ stages:
   - deploy
 
 services:
-  - name: docker:20-dind
+  - name: docker:dind
     alias: docker
     command: ["--tls=false"]
 
