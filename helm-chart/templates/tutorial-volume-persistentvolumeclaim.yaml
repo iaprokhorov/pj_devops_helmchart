@@ -1,16 +1,17 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  creationTimestamp: null
-  labels:
-#    io.kompose.service: tutorial-volume
-    app: tutorial-volume
-    component: myapp
   name: tutorial-volume
+#  creationTimestamp: null
+#  labels:
+#    app: tutorial-volume
+#    component: myapp
+
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
-status: {}
+#status: {}
