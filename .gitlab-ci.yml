@@ -35,9 +35,11 @@ build:
 deploy:
   stage: deploy
   image:
-    name: alpine/helm:3.10.1
+#    name: alpine/helm:3.10.1
+    name: dtzar/helm-kubectl:3.10.1
     entrypoint: [""]
-
+  before_script:
+    - docker run -it -v ~/.kube:/root/.kube dtzar/helm-kubectl
   script:
     - helm upgrade myapp helm-chart --install --namespace pj-devops #--kubeconfig ~/.kube/config
 
