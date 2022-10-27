@@ -11,7 +11,7 @@ variables:
 #  TAG: develop
 
 stages:
-  - build
+#  - build
   - deploy
 
 services:
@@ -19,17 +19,17 @@ services:
     alias: docker
     command: ["--tls=false"]
 
-build:
-  stage: build
-  image:
-   name: gitlab/dind
+#build:
+#  stage: build
+#  image:
+#   name: gitlab/dind
 
-  script:
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-   # - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CONTAINER_IMAGE_NAME .
-   # - docker push registry.gitlab.com/pj-devops/django-app:$TAG_COMMIT
-    - docker push $CONTAINER_IMAGE_NAME
+#  script:
+#    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+#   # - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+#    - docker build -t $CONTAINER_IMAGE_NAME .
+#   # - docker push registry.gitlab.com/pj-devops/django-app:$TAG_COMMIT
+#    - docker push $CONTAINER_IMAGE_NAME
 
 deploy:
   stage: deploy

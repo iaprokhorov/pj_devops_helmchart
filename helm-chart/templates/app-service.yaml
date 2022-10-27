@@ -6,8 +6,8 @@ metadata:
     app: app
     component: myapp
 spec:
+  type: NodePort
   ports:
-    - type: NodePort
     - name: "3003"
       port: 3003
       targetPort: 3003
