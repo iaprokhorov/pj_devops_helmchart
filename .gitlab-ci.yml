@@ -37,6 +37,7 @@ deploy:
     name: dtzar/helm-kubectl:3.10.1
 
   script:
+    - kubectl create namespace pj-devops
     - helm upgrade myapp helm-chart --install --namespace pj-devops
 
 #    - |
