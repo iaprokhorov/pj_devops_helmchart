@@ -4,6 +4,10 @@ variables:
   REGISTRY_REPOSITORY: $RELEASE_NAME
   DOCKERFILE_PATH: $CI_PROJECT_DIR/Dockerfile
   CONTAINER_IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
 #  TAG: develop
 
 stages:
@@ -11,12 +15,14 @@ stages:
   - deploy
 
 services:
-  - docker:dind
+  - name: docker:20-dind
+    alias: docker
+    command: ["--tls=false"]
 
 build:
   stage: build
   image:
-   name: docker:git
+   name: docker:20-dind
 
   script:
     - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
