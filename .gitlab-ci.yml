@@ -39,7 +39,7 @@ deploy:
     entrypoint: [""]
 
   script:
-    - helm install --namespace pj-devops myapp helm-chart --kubeconfig ~/.kube/config
+    - helm install --namespace pj-devops myapp helm-chart #--kubeconfig ~/.kube/config
 
 
 #    - |
