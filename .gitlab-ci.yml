@@ -35,7 +35,7 @@ build:
 deploy:
   stage: deploy
   image:
-    name: alpine/helm:3.2.1
+    name: alpine/helm:3.10.1
 
   script:
     - helm upgrade myapp helm-chart --install --namespace pj-devops #--kubeconfig ~/.kube/config
