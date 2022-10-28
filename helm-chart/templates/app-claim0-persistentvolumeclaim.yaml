@@ -8,7 +8,7 @@ metadata:
 #    component: myapp
 
 spec:
-  storageClassName: fast
+  storageClassName: local-storage
   accessModes:
     - ReadWriteMany
   resources:
