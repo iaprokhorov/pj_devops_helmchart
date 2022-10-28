@@ -9,7 +9,7 @@ metadata:
     component: myapp
 
 spec:
-  storageClassName: ""
+#  storageClassName: ""
   volumeName: task-pv-volume
   volumeMode: Filesystem
   accessModes:

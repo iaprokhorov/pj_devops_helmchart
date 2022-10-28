@@ -9,7 +9,7 @@ metadata:
 #    component: myapp
 
 spec:
-  storageClassName: ""
+#  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
