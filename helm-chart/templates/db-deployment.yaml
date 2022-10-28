@@ -27,7 +27,7 @@ spec:
               value: password
             - name: POSTGRES_USER
               value: vinhle
-          image: postgres:13-alpine
+          image: {{ index .Values.containerDB.image }}
           name: db
           ports:
             - containerPort: 5432
@@ -40,4 +40,5 @@ spec:
         - name: tutorial-volume
           persistentVolumeClaim:
             claimName: tutorial-volume
+      nodeName: app
 #status: {}
