@@ -9,6 +9,6 @@ spec:
   capacity:
     storage: 300Mi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
     path: "/mnt/data"
