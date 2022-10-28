@@ -47,4 +47,5 @@ spec:
         - name: app-volume
           persistentVolumeClaim:
             claimName: app-claim0
+      nodeName: app
 #status: {}
