@@ -12,7 +12,6 @@ spec:
     matchLabels:
       app: app
       component: myapp
-      type: local
   strategy:
     type: Recreate
   template:
