@@ -5,11 +5,12 @@ metadata:
 #  creationTimestamp: null
   labels:
     type: local
-#    app: app-claim0
-#    component: myapp
+    app: app-claim0
+    component: myapp
 
 spec:
   storageClassName: local-storage
+  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   resources:

@@ -8,7 +8,9 @@ spec:
   storageClassName: local-storage
   capacity:
     storage: 300Mi
+  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: "/mnt/data"
