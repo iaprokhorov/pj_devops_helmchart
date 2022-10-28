@@ -10,12 +10,12 @@ spec:
   storageClassName: local-storage
   capacity:
     storage: 300Mi
-  local:
-    path: /data/myapp
+#  local:
+#    path: /data/myapp
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
 
-#  hostPath:
-#    path: "/mnt/data"
+  hostPath:
+    path: "/data/myapp"
