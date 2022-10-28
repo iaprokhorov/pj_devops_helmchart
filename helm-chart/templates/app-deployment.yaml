@@ -45,8 +45,8 @@ spec:
               name: app-claim0
       restartPolicy: Always
       volumes:
-        - name: local-storage
-#        - name: app-claim0
+#        - name: local-storage
+        - name: app-claim0
           persistentVolumeClaim:
             claimName: app-claim0
 status: {}
