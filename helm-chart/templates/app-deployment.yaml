@@ -40,7 +40,7 @@ spec:
             - containerPort: 3003
           resources: {}
           volumeMounts:
-            - mountPath: "/app"
+            - mountPath: /app
               name: app-volume
       restartPolicy: Always
       volumes:
