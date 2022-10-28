@@ -4,8 +4,8 @@ metadata:
   name: app-claim0
 #  creationTimestamp: null
   labels:
-    type: local
-    app: app-claim0
+#    type: local
+    app: app
     component: myapp
 
 spec:
