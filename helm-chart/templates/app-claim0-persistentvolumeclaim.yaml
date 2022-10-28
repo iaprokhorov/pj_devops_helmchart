@@ -8,9 +8,9 @@ metadata:
 #    component: myapp
 
 spec:
-  storageClassName: manual
+  storageClassName: fast
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 100Mi
