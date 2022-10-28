@@ -40,13 +40,11 @@ spec:
             - containerPort: 3003
           resources: {}
           volumeMounts:
-            - mountPath: /app
-#              name: local-storage
+            - mountPath: "/app"
               name: app-volume
       restartPolicy: Always
       volumes:
-#        - name: local-storage
         - name: app-volume
           persistentVolumeClaim:
             claimName: app-claim0
-status: {}
+#status: {}

@@ -40,4 +40,4 @@ spec:
         - name: tutorial-volume
           persistentVolumeClaim:
             claimName: tutorial-volume
-status: {}
+#status: {}
