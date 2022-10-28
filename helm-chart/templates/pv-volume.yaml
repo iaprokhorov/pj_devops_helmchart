@@ -5,7 +5,7 @@ metadata:
 #  labels:
 #    type: local
 spec:
-  storageClassName: fast
+  storageClassName: local-storage
   capacity:
     storage: 300Mi
   accessModes:
