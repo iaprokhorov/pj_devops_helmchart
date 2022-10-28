@@ -16,15 +16,15 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
+  storageClassName: ""
   hostPath:
     path: "/mnt/data"
 #    path: "/data/myapp"
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/app
-              operator: In
-              values:
-                - app
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#        - matchExpressions:
+#            - key: kubernetes.io/app
+#              operator: In
+#              values:
+#                - app
