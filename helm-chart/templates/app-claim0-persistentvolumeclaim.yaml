@@ -2,9 +2,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: app-claim0
-  labels:
-    app: app
-    component: myapp
+#  labels:
+#   app: app
+#    component: myapp
 spec:
   volumeName: task-pv-volume
   storageClassName: local-storage
