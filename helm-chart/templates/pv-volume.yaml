@@ -3,7 +3,9 @@ kind: PersistentVolume
 metadata:
   name: task-pv-volume
   labels:
-    type: local
+#    type: local
+    app: app
+    component: myapp
 spec:
   storageClassName: local-storage
   capacity:
