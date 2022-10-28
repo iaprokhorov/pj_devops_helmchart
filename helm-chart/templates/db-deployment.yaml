@@ -18,6 +18,7 @@ spec:
       labels:
         app: db
         component: myapp
+        type: local
     spec:
       containers:
         - env:

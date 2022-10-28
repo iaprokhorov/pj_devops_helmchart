@@ -3,14 +3,15 @@ kind: PersistentVolumeClaim
 metadata:
   name: tutorial-volume
 #  creationTimestamp: null
-#  labels:
+  labels:
+    type: local
 #    app: tutorial-volume
 #    component: myapp
 
 spec:
   storageClassName: local-storage
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi
