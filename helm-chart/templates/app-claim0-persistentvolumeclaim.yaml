@@ -11,7 +11,7 @@ metadata:
 spec:
 #  storageClassName: ""
   volumeName: task-pv-volume
-  storageClassName: ""
+  storageClassName: "local-storage"
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
