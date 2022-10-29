@@ -12,19 +12,27 @@ spec:
     matchLabels:
       app: app
       component: myapp
-  strategy:
-    type: Recreate
+#  strategy:
+#    type: Recreate
   template:
     metadata:
       labels:
         app: app
         component: myapp
     spec:
+      volumes:
+        - name: app-volume
+          persistentVolumeClaim:
+            claimName: app-pvc
       containers:
-        - args:
-            - sh
-            - -c
-            - python manage.py migrate && python manage.py runserver 0.0.0.0:3003
+        - name: app
+          image: {{ index .Values.containerApp.image }}
+          volumeMounts:
+            - name: app-volume
+              mountPath: /app
+#          args:
+          command:
+            - sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:3003"
           env:
             - name: DB_HOST
               value: db
@@ -34,20 +42,11 @@ spec:
               value: password
             - name: DB_USER
               value: vinhle
-          image: {{ index .Values.containerApp.image }}
-          name: app
-          ports:
-            - containerPort: 3003
+#          ports:
+#           - containerPort: 3003
 #         resources: {}
-          volumeMounts:
-            - mountPath: /app
-              name: app-volume
       imagePullSecrets:
         - name: gitlab-auth
 #      restartPolicy: Always
-      volumes:
-        - name: app-volume
-          persistentVolumeClaim:
-            claimName: app-pvc
       nodeName: app
 #status: {}
