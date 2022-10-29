@@ -5,7 +5,7 @@
 replicaCount: 1
 
 containerApp:
-  image: registry.gitlab.com/pj-devops/django-app:1.0.3
+  image: registry.gitlab.com/pj-devops/django-app:1.0.4
 
 containerDB:
   image: postgres:13-alpine
