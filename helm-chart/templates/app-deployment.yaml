@@ -38,13 +38,13 @@ spec:
           name: app
           ports:
             - containerPort: 3003
-          resources: {}
+#         resources: {}
           volumeMounts:
             - mountPath: /app
               name: app-volume
       imagePullSecrets:
         - name: gitlab-auth
-      restartPolicy: Always
+#      restartPolicy: Always
       volumes:
         - name: app-volume
           persistentVolumeClaim:
