@@ -34,11 +34,11 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: tutorial-volume
+              name: db-volume
       restartPolicy: Always
       volumes:
-        - name: tutorial-volume
+        - name: db-volume
           persistentVolumeClaim:
-            claimName: tutorial-volume
+            claimName: db-pvc
       nodeName: app
 #status: {}

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: tutorial-volume
+  name: db-pvc
 #  creationTimestamp: null
   labels:
     type: local

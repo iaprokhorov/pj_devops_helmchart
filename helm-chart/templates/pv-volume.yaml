@@ -3,11 +3,11 @@ kind: PersistentVolume
 metadata:
   name: task-pv-volume
   labels:
-    type: local
-#    app: app
-#    component: myapp
+#   type: local
+    app: app
+    component: myapp
 spec:
-#  storageClassName: ""
+  storageClassName: local-storage
   capacity:
     storage: 300Mi
 #  local:
@@ -16,15 +16,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
   hostPath:
     path: "/mnt/data"
-#    path: "/data/myapp"
-#  nodeAffinity:
-#    required:
-#      nodeSelectorTerms:
-#        - matchExpressions:
-#            - key: kubernetes.io/app
-#              operator: In
-#              values:
-#                - app
+
