@@ -39,10 +39,10 @@ deploy:
   before_script:
 #    - kubectl delete namespaces pj-devops
     - kubectl create secret docker-registry gitlab-auth \
-      --docker-server=$CI_REGISTRY \
-      --docker-username=$CI_DEPLOY_USERNAME \
-      --docker-password=$CI_DEPLOY_TOKEN \
-      --docker-email=puller@mail.com
+    --docker-server=$CI_REGISTRY \
+    --docker-username=$CI_DEPLOY_USERNAME \
+    --docker-password=$CI_DEPLOY_TOKEN \
+    --docker-email=puller@mail.com
 
   script:
     - kubectl create namespace pj-devops
