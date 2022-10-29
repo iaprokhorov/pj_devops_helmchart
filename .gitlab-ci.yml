@@ -42,8 +42,8 @@ deploy:
   before_script:
 #    - kubectl delete namespaces pj-devops
     - kubectl create namespace ${NAMESPACE}
-    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_USER} --docker-password=${DOCKER_PASSWORD} --docker-email=puller@mail.com
-
+#    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_USER} --docker-password=${DOCKER_PASSWORD} --docker-email=puller@mail.com
+    - kubectl --namespace=pj-devops create secret docker-registry gitlab-auth --docker-server=registry.gitlab.com --docker-username=k8s-puller --docker-password=CsMfRaTjg_r8_AnNaDWA --docker-email=puller@mail.com
   script:
     - helm upgrade myapp helm-chart --install --namespace ${NAMESPACE}
 
