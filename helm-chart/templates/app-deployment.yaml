@@ -29,7 +29,7 @@ spec:
           image: {{ index .Values.containerApp.image }}
           volumeMounts:
             - name: app-volume
-              mountPath: /app
+              mountPath: /
 #          args:
           command:
             - sh -c "python /manage.py migrate && python /manage.py runserver 0.0.0.0:3003"
