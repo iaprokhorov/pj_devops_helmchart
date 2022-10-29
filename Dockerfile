@@ -17,8 +17,7 @@ RUN pip install -r /requirements.txt
 RUN apk del .tmp-build-deps
 # re
 RUN mkdir /app
-#WORKDIR /app
-WORKDIR /
+WORKDIR /app
 COPY ./app /app
 
 # [Security] Limit the scope of user who run the docker image
