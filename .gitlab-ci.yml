@@ -7,6 +7,9 @@ variables:
   DOCKER_HOST: tcp://docker:2375
   DOCKER_DRIVER: overlay2
   DOCKER_TLS_CERTDIR: ""
+  DOCKER_REGISTRY: $CI_REGISTRY
+  DOCKER_USER: $CI_DEPLOY_USERNAME
+  DOCKER_PASSWORD: $CI_DEPLOY_TOKEN
 
 #  TAG: develop
 
@@ -39,7 +42,7 @@ deploy:
   before_script:
 #    - kubectl delete namespaces pj-devops
     - kubectl create namespace ${NAMESPACE}
-    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=$CI_REGISTRY --docker-username=$CI_DEPLOY_USERNAME --docker-password=$CI_DEPLOY_TOKEN --docker-email=puller@mail.com
+    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_USER} --docker-password=${DOCKER_PASSWORD} --docker-email=puller@mail.com
 
   script:
     - helm upgrade myapp helm-chart --install --namespace ${NAMESPACE}
