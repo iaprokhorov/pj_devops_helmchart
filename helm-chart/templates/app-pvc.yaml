@@ -6,8 +6,8 @@ metadata:
 #   app: app
 #    component: myapp
 spec:
-  volumeName: task-pv-volume
-  storageClassName: local-storage
+  volumeName: pv-app
+#  storageClassName: local-storage
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
