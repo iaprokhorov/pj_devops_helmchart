@@ -42,8 +42,8 @@ spec:
               value: password
             - name: DB_USER
               value: vinhle
-#          ports:
-#           - containerPort: 3003
+          ports:
+           - containerPort: 3003
 #         resources: {}
       imagePullSecrets:
         - name: gitlab-auth
