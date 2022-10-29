@@ -37,7 +37,7 @@ deploy:
     name: dtzar/helm-kubectl:3.10.1
 
   before_script:
-    - kubectl delete namespaces pj-devops
+#    - kubectl delete namespaces pj-devops
     - kubectl create secret docker-registry gitlab-auth \
                --docker-server=$CI_REGISTRY \
                --docker-username=$CI_DEPLOY_USERNAME \
