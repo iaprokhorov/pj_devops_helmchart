@@ -11,10 +11,8 @@ variables:
 #  DOCKER_USER: $CI_DEPLOY_USERNAME
 #  DOCKER_PASSWORD: $CI_DEPLOY_TOKEN
 
-#  TAG: develop
-
 stages:
-#  - build
+  - build
   - deploy
 
 services:
@@ -22,16 +20,16 @@ services:
     alias: docker
     command: ["--tls=false"]
 
-#build:
-#  stage: build
-#  image:
-##    name: gitlab/dind
+build:
+  stage: build
+  image:
+    name: gitlab/dind
 #    name: docker:git
 
-#  script:
-#    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-#    - docker build -t $CONTAINER_IMAGE_NAME .
-#    - docker push $CONTAINER_IMAGE_NAME
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    - docker build -t $CONTAINER_IMAGE_NAME .
+    - docker push $CONTAINER_IMAGE_NAME
 
 deploy:
   stage: deploy
@@ -44,7 +42,6 @@ deploy:
     - kubectl delete pv pv-db
     - kubectl create namespace ${NAMESPACE}
 #    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_USER} --docker-password=${DOCKER_PASSWORD} --docker-email=puller@mail.com
-#    - kubectl --namespace=pj-devops create secret docker-registry gitlab-auth --docker-server=registry.gitlab.com --docker-username=k8s-puller --docker-password=CsMfRaTjg_r8_AnNaDWA --docker-email=puller@mail.com
     - kubectl create secret docker-registry gitlab-auth --docker-server=registry.gitlab.com --docker-username=k8s-puller --docker-password=CsMfRaTjg_r8_AnNaDWA -n pj-devops --dry-run=client -o yaml | kubectl apply -f -
   script:
     - helm upgrade myapp helm-chart --install --namespace ${NAMESPACE}
