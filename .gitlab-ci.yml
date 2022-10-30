@@ -61,4 +61,4 @@ mon-install:
 #    - kubectl create -f monmanifests/kubernetes-node-exporter/service.yaml
      - helm repo add grafana https://grafana.github.io/helm-charts
      - helm install loki grafana/loki-stack --namespace loki --create-namespace --set grafana.enabled=true --set service.type=NodePort
-     - kubectl get secret --namespace loki loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
