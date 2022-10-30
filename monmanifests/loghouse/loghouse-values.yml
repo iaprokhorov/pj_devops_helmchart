@@ -30,11 +30,9 @@ clickhouse:
         memory: 32Mi
 
 fluentd:
-#  tolerations:
-#  - key: "node-role.kubernetes.io/master"
-#    operator: "Exists"
-#  - key: "node-role.kubernetes.io/ingress"
-#    operator: "Exists"
+  tolerations:
+  - key: "node-role.kubernetes.io/master"
+    operator: "Exists"
   resources:
     requests:
       cpu: 100m
