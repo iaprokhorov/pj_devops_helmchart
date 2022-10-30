@@ -59,5 +59,5 @@ mon-install:
   script:
 #    - kubectl create -f monmanifests/kubernetes-node-exporter/daemonset.yaml
 #    - kubectl create -f monmanifests/kubernetes-node-exporter/service.yaml
-     - helm repo add loghouse https://flant.github.io/loghouse/charts/
-     - helm install --namespace loghouse --create-namespace -f monmanifests/loghouse/loghouse-values.yml loghouse loghouse/loghouse
+     - helm repo add grafana https://grafana.github.io/helm-charts
+     - helm install loki grafana/loki-stack --namespace loki --create-namespace --set grafana.enabled=true
