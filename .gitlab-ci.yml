@@ -17,6 +17,7 @@ stages:
 #  - deploy
   - mon-install
 
+
 services:
   - name: docker:18.09.7-dind
     alias: docker
@@ -51,10 +52,14 @@ mon-install:
   image:
     name: dtzar/helm-kubectl:3.10.1
 
-  before_script:
+#  before_script:
 #    - kubectl delete namespace ${NAMESPACE_MON}
-    - kubectl create namespace ${NAMESPACE_MON}
+#    - kubectl create namespace ${NAMESPACE_MON}
 
   script:
-    - kubectl create -f monmanifests/kubernetes-node-exporter/daemonset.yaml
-    - kubectl create -f monmanifests/kubernetes-node-exporter/service.yaml
+#    - kubectl create -f monmanifests/kubernetes-node-exporter/daemonset.yaml
+#    - kubectl create -f monmanifests/kubernetes-node-exporter/service.yaml
+     - helm repo add loghouse https://flant.github.io/loghouse/charts/
+     - helm fetch loghouse/loghouse --untar
+     - vim loghouse/values.yaml
+     - helm install --namespace loghouse -n loghouse loghouse
