@@ -60,4 +60,4 @@ mon-install:
 #    - kubectl create -f monmanifests/kubernetes-node-exporter/daemonset.yaml
 #    - kubectl create -f monmanifests/kubernetes-node-exporter/service.yaml
      - helm repo add loghouse https://flant.github.io/loghouse/charts/
-     - helm install --wait --timeout 1200 --namespace loghouse --create-namespace -f monmanifests/loghouse/loghouse-values.yml loghouse loghouse/loghouse
+     - helm install --namespace loghouse --create-namespace -f monmanifests/loghouse/loghouse-values.yml loghouse loghouse/loghouse
