@@ -11,6 +11,7 @@ spec:
     - name: "3003"
       port: 3003
       targetPort: 3003
+#      nodePort: 30496
   selector:
     app: app
     component: myapp

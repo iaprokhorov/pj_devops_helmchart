@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: grafana
+  namespace: loki
+  labels:
+    app: grafana
+spec:
+  # tls:
+  #   - secretName: grafana-tls-secret
+  #     hosts:
+  #       - grafana.example.com
+  rules:
+    - host: loki-grafana.example.com
+      http:
+        paths:
+          - backend:
+              serviceName: loki-grafana
+              servicePort: 80
+            path: /

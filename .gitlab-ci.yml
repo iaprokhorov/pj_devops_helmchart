@@ -59,6 +59,7 @@ mon-install:
   script:
 #    - kubectl create -f monmanifests/kubernetes-node-exporter/daemonset.yaml
 #    - kubectl create -f monmanifests/kubernetes-node-exporter/service.yaml
-     - helm repo add grafana https://grafana.github.io/helm-charts
-     - helm install loki grafana/loki-stack --namespace loki --create-namespace --set grafana.enabled=true --set service.type=NodePort
+#     - helm repo add grafana https://grafana.github.io/helm-charts
+#     - helm install loki grafana/loki-stack --namespace loki --create-namespace --set grafana.enabled=true
+     - kubectl apply -f monmanifests/loki/ingress.yaml
 
