@@ -1,5 +1,6 @@
 variables:
-  NAMESPACE: pj-devops
+  NAMESPACE_APP: pj-devops
+  NAMESPACE_MON: monitoring
   RELEASE_NAME: django-app
   REGISTRY_REPOSITORY: $RELEASE_NAME
   DOCKERFILE_PATH: $CI_PROJECT_DIR/Dockerfile
@@ -13,7 +14,8 @@ variables:
 
 stages:
 #  - build
-  - deploy
+#  - deploy
+  - mon-install
 
 services:
   - name: docker:18.09.7-dind
@@ -30,18 +32,29 @@ services:
 #    - docker build -t $CONTAINER_IMAGE_NAME .
 #    - docker push $CONTAINER_IMAGE_NAME
 
-deploy:
-  stage: deploy
+#deploy:
+#  stage: deploy
+#  image:
+#    name: dtzar/helm-kubectl:3.10.1
+
+#  before_script:
+#    - kubectl delete namespaces ${NAMESPACE_APP}
+#    - kubectl delete pv pv-db
+#    - kubectl create namespace ${NAMESPACE_APP}
+##    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_USER} --docker-password=${DOCKER_PASSWORD} --docker-email=puller@mail.com
+#    - kubectl create secret docker-registry gitlab-auth --docker-server=registry.gitlab.com --docker-username=k8s-puller --docker-password=CsMfRaTjg_r8_AnNaDWA -n pj-devops --dry-run=client -o yaml | kubectl apply -f -
+#  script:
+#    - helm upgrade myapp helm-chart --install --namespace ${NAMESPACE_APP}
+
+mon-install:
+  stage: mon-install
   image:
     name: dtzar/helm-kubectl:3.10.1
 
   before_script:
-    - kubectl delete namespaces ${NAMESPACE}
-    - kubectl delete pv pv-db
-    - kubectl create namespace ${NAMESPACE}
-#    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_USER} --docker-password=${DOCKER_PASSWORD} --docker-email=puller@mail.com
-    - kubectl create secret docker-registry gitlab-auth --docker-server=registry.gitlab.com --docker-username=k8s-puller --docker-password=CsMfRaTjg_r8_AnNaDWA -n pj-devops --dry-run=client -o yaml | kubectl apply -f -
+#    - kubectl delete namespace ${NAMESPACE_MON}
+    - kubectl create namespace ${NAMESPACE_MON}
+
   script:
-    - helm upgrade myapp helm-chart --install --namespace ${NAMESPACE}
-
-
+    - kubectl create -f monmanifests/kubernetes-node-exporter/daemonset.yaml
+    - kubectl create -f monmanifests/kubernetes-node-exporter/service.yaml
