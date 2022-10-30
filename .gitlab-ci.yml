@@ -12,7 +12,7 @@ variables:
 #  DOCKER_PASSWORD: $CI_DEPLOY_TOKEN
 
 stages:
-  - build
+#  - build
   - deploy
 
 services:
@@ -20,16 +20,15 @@ services:
     alias: docker
     command: ["--tls=false"]
 
-build:
-  stage: build
-  image:
-    name: gitlab/dind
-#    name: docker:git
+#build:
+#  stage: build
+#  image:
+#    name: gitlab/dind
 
-  script:
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
-    - docker build -t $CONTAINER_IMAGE_NAME .
-    - docker push $CONTAINER_IMAGE_NAME
+#  script:
+#    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+#    - docker build -t $CONTAINER_IMAGE_NAME .
+#    - docker push $CONTAINER_IMAGE_NAME
 
 deploy:
   stage: deploy
@@ -38,7 +37,6 @@ deploy:
 
   before_script:
     - kubectl delete namespaces ${NAMESPACE}
-    - kubectl delete pv pv-app
     - kubectl delete pv pv-db
     - kubectl create namespace ${NAMESPACE}
 #    - kubectl --namespace=${NAMESPACE} create secret docker-registry gitlab-auth --docker-server=${DOCKER_REGISTRY} --docker-username=${DOCKER_USER} --docker-password=${DOCKER_PASSWORD} --docker-email=puller@mail.com
