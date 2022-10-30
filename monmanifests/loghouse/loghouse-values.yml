@@ -1,10 +1,10 @@
-ingress:
-  enable: true
-  enable_https: false
-  loghouse:
-    host: loghouse.local
-    path: /
-    tls_secret_name:
+#ingress:
+#  enable: true
+#  enable_https: false
+#  loghouse:
+#    host: loghouse.local
+#    path: /
+#    tls_secret_name:
 
 enable_tabix: false
 
@@ -32,7 +32,7 @@ clickhouse:
 fluentd:
   tolerations:
   - key: "node-role.kubernetes.io/master"
-    operator: "Exists"
+#    operator: "Exists"
   resources:
     requests:
       cpu: 100m
